@@ -1,57 +1,4 @@
-<!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#f7f4ea"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><title>Wildoku</title>
-<style>
-:root{--bg:#f7f4ea;--ink:#26322c;--muted:#6e7b73;--line:#34443b;--bad:#d83b35}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:var(--bg);font-family:ui-rounded,-apple-system,BlinkMacSystemFont,"SF Pro Rounded",system-ui,sans-serif;color:var(--ink)}html,body{height:100%;overflow:hidden}body{display:flex;justify-content:center;overscroll-behavior:none}.app{width:min(100%,620px);height:100dvh;overflow:hidden;padding:max(10px,env(safe-area-inset-top)) 14px max(10px,env(safe-area-inset-bottom));display:flex;flex-direction:column}header{display:flex;justify-content:space-between;align-items:center;margin:2px 2px 12px}.brand{font-size:29px;font-weight:900;letter-spacing:-1px}.badge{padding:7px 10px;border-radius:999px;background:#fff9;border:1px solid #0001;font-size:12px;font-weight:800}.online{color:#287342}.offline{color:#875e24}.info{display:flex;justify-content:space-between;align-items:end;margin:8px 2px 12px}.level{font-size:18px;font-weight:850}.sub{font-size:12px;color:var(--muted);margin-top:3px}.timer{font-variant-numeric:tabular-nums;font-weight:800}.rightinfo{text-align:right}.lives{font-size:15px;margin-bottom:3px;letter-spacing:2px;min-height:20px}.board{width:100%;aspect-ratio:1;flex:0 0 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));border:3px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 30px #26362c18;touch-action:manipulation}.cell{position:relative;min-width:0;min-height:0;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:clamp(22px,7vw,39px);font-weight:900;user-select:none;-webkit-user-select:none;border-right:1px solid #34443a30;border-bottom:1px solid #34443a30}.cell.region-right{border-right:3px solid var(--line)}.cell.region-bottom{border-bottom:3px solid var(--line)}.cell.last-col{border-right:0}.cell.last-row{border-bottom:0}.cell.x .mark{font-size:.8em;color:#53645a}.cell.q .mark{color:#725c2c}.cell.bad .mark{color:var(--bad)}.cell.fixed .mark{filter:drop-shadow(0 1px 1px #fff)}.cell.bad{}.cell.hint{box-shadow:inset 0 0 0 4px #f0a500;z-index:2}.cell.hint .mark{color:#9a6500}.cell.hint-source{box-shadow:inset 0 0 0 4px #5b79d6;z-index:2}.cell.hint-source .mark{color:#405ba8}.r0{background:#f5d8cf}.r1{background:#dcebd4}.r2{background:#d7e5f5}.r3{background:#f3e5b7}.r4{background:#e7d8f1}.r5{background:#d4ece8}.r6{background:#f2d8e5}.r7{background:#dce3c6}.r8{background:#d8ddf1}.r9{background:#eedbc9}.status{text-align:center;min-height:29px;margin:10px 0 0;font-weight:850}.win{color:#24733f}.helps{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.helpbtn{border:0;border-radius:13px;background:#fff8dc;padding:11px 6px;font:inherit;font-size:13px;font-weight:850;color:var(--ink);box-shadow:0 3px 12px #25312b12}.helpbtn:disabled{opacity:.45}.hintbox{display:none;margin:9px 0 0;padding:10px 12px;border-radius:13px;background:#fff8dc;font-size:12px;line-height:1.45;color:#5e522e}.hintbox.show{display:block}.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}.btn{border:0;border-radius:13px;background:#fff;padding:12px 6px;font:inherit;font-size:13px;font-weight:850;color:var(--ink);box-shadow:0 3px 12px #25312b12}.btn:active{transform:scale(.98)}.legend{margin:13px 3px 0;background:#ffffff9c;border-radius:13px;padding:11px 13px;font-size:12px;line-height:1.55;color:#536158}.foot{text-align:center;color:#7b877f;font-size:9px;margin-top:5px}.legend{display:none}.topactions{display:flex;align-items:center;gap:7px}.infobtn{position:relative;width:38px;height:38px;border:1px solid #0001;border-radius:50%;background:#fff9;color:var(--ink);font:inherit;font-weight:900;font-size:18px}.infobtn.update-pending::after{content:"";position:absolute;right:1px;top:1px;width:9px;height:9px;border-radius:50%;background:#e23b35;border:2px solid var(--bg);box-sizing:content-box}.modal{position:fixed;inset:0;background:#17221db8;z-index:1200;display:none;align-items:center;justify-content:center;padding:22px}.modal.show{display:flex}.modalcard{width:min(100%,520px);max-height:80vh;overflow:auto;background:var(--bg);border-radius:20px;padding:20px;box-shadow:0 20px 70px #0005}.modalcard h2{margin:0 0 12px}.modalcard p{line-height:1.55;color:#536158}.modalclose{width:100%;border:0;border-radius:13px;background:var(--ink);color:#fff;padding:12px;font:inherit;font-weight:850}.creating{position:absolute;inset:0;z-index:20;background:#fffef8e8;display:none;align-items:center;justify-content:center;text-align:center;padding:20px;font-size:16px;font-weight:850;color:var(--ink)}.creating.show{display:flex}.boardwrap{position:relative;flex:0 0 auto}.info{margin-top:4px}.sizebar{margin-bottom:7px}.helps{margin-top:8px}.controls{margin-top:8px}.status{min-height:20px;margin-top:5px;font-size:12px}@media(max-height:760px){.brand{font-size:25px}.sizebtn{padding:6px 9px}.btn,.helpbtn{padding:9px 5px}.info{margin-bottom:7px}.foot{display:none}}.toast{position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);background:#26322cee;color:#fff;padding:10px 14px;border-radius:999px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1}.sizebar{display:flex;gap:7px;align-items:center;margin:0 2px 11px;overflow-x:auto;padding-bottom:2px}.sizebtn{border:1px solid #0001;background:#fff9;border-radius:999px;padding:8px 11px;font:inherit;font-size:12px;font-weight:850;color:var(--ink);white-space:nowrap}.sizebtn.active{background:#26322c;color:#fff}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:999}.confetti i{position:absolute;left:50%;bottom:-22px;width:10px;height:16px;border-radius:2px;opacity:0;animation:burst var(--dur) cubic-bezier(.12,.58,.25,1) forwards;transform:translate3d(-50%,0,0) rotate(0deg)}@keyframes burst{0%{opacity:0;transform:translate3d(-50%,0,0) rotate(0deg)}7%{opacity:1}55%{opacity:1;transform:translate3d(calc(-50% + var(--dx)),var(--peak),0) rotate(var(--rot1))}100%{opacity:0;transform:translate3d(calc(-50% + var(--dx2)),105vh,0) rotate(var(--rot2))}}
-.updatebar{display:none;margin:0 0 12px;padding:12px;border-radius:14px;background:#fff3cd;border:1px solid #ffe69c;align-items:center;justify-content:space-between;gap:10px;font-size:14px}.updatebar.show{display:flex}.updateactions{display:flex;gap:8px;flex-shrink:0}.updatebar button{border:0;border-radius:10px;padding:8px 12px;font-weight:700;background:#20342b;color:#fff}.updatebar button.secondary{background:#fff;color:#20342b;border:1px solid #d8d8cf}
-/* 0.3.8: viewport space better used on iPhone */
-.app{padding:max(8px,env(safe-area-inset-top)) 14px max(8px,env(safe-area-inset-bottom));}
-header{margin:0 2px 8px}.brand{font-size:31px}.infobtn{width:42px;height:42px;font-size:20px}.badge{font-size:13px;padding:8px 11px}
-.sizebar{margin-bottom:8px;gap:8px}.sizebtn{font-size:13px;padding:9px 12px}
-.info{margin:3px 2px 7px}.level{font-size:20px}.sub{font-size:13px}.lives{font-size:18px}.timer{font-size:18px}
-.boardwrap{flex:1 1 auto;min-height:0;display:flex;align-items:flex-start;justify-content:center}.board{width:min(100%,calc(100dvh - 365px));max-width:100%;height:auto!important;aspect-ratio:1}
-.status{margin-top:4px;min-height:16px;font-size:12px}.helps{margin-top:6px}.helpbtn{font-size:14px;padding:12px 6px}.controls{margin-top:7px}.btn{font-size:14px;padding:12px 5px}.foot{font-size:10px;margin-top:5px}
-.creating{border-radius:14px;font-size:17px}
-@media(max-height:780px){.board{width:min(100%,calc(100dvh - 340px))}.brand{font-size:28px}.sizebtn{padding:7px 10px}.helpbtn,.btn{padding:10px 5px}.foot{display:none}}
 
-/* 0.4.0: compact iPhone layout fixes */
-.rightinfo{min-width:132px;display:flex;flex-direction:column;align-items:flex-end;flex-shrink:0}
-.lives{white-space:nowrap;letter-spacing:0;font-size:clamp(15px,4.3vw,18px);line-height:1.15}
-.info>div:first-child{min-width:0;padding-right:8px}
-.sub{line-height:1.25}
-.boardwrap{flex:0 0 auto}
-.board{width:100%;max-width:100%;height:auto!important;aspect-ratio:1}
-.helps{margin-top:10px}.controls{margin-top:8px}.foot{margin-top:6px}
-@media (display-mode:standalone){.app{padding-bottom:max(18px,env(safe-area-inset-bottom))}}
-@media(max-height:800px){.board{width:min(100%,calc(100dvh - 350px))}.helps{margin-top:8px}}
-
-.diffbar{display:flex;gap:7px;align-items:center;margin:0 2px 8px}.diffbtn{flex:1;border:1px solid #0001;background:#fff9;border-radius:999px;padding:7px 8px;font:inherit;font-size:11px;font-weight:850;color:var(--ink);white-space:nowrap}.diffbtn.active{background:#26322c;color:#fff}.cell.region-right,.cell.region-bottom{transition:border-width .12s}.no-regions.board{gap:4px;padding:4px;background:#fff;border-color:#e7e1d5}.no-regions .cell{border:0!important;border-radius:7px}.no-regions .cell.region-right,.no-regions .cell.region-bottom,.no-regions .cell.last-col,.no-regions .cell.last-row{border:0!important}.settingrow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid #0001}.switch{border:0;border-radius:999px;background:#26322c;color:#fff;padding:8px 13px;font:inherit;font-weight:850}.switch.off{background:#d9ddd9;color:#435047}.difficulty-note{font-size:11px;color:var(--muted);margin-top:7px}
-
-/* 0.6.2 compact responsive desktop/tablet layout */
-@media (min-width: 760px){
-  html,body{height:auto;min-height:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior:auto}
-  body{align-items:flex-start;touch-action:auto}
-  .board{touch-action:auto}
-  .app{width:min(92vw,960px);height:auto;min-height:100vh;overflow:visible;padding:24px 26px 24px}
-  header{margin:0 2px 18px}.brand{font-size:42px}.infobtn{width:48px;height:48px;font-size:22px}.badge{font-size:15px;padding:10px 15px}
-  .sizebar{justify-content:center;overflow:visible;gap:10px;margin-bottom:12px}.sizebtn{font-size:16px;padding:10px 18px}
-  .diffbar{gap:10px;margin-bottom:14px}.diffbtn{font-size:15px;padding:10px 14px}
-  .info{margin:8px 2px 14px}.level{font-size:28px}.sub{font-size:16px}.lives{font-size:24px}.timer{font-size:24px}
-  .boardwrap{width:min(50vh,500px,100%);margin:0 auto;flex:0 0 auto}.board{width:100%;max-width:none}
-  .cell{font-size:clamp(28px,4vw,52px)}
-  .helps{width:min(760px,100%);margin:18px auto 0;gap:12px}.helpbtn{font-size:17px;padding:15px 10px}
-  .hintbox{width:min(760px,100%);margin:12px auto 0;font-size:15px;padding:14px 16px}
-  .controls{width:min(760px,100%);margin:14px auto 0;gap:12px}.btn{font-size:16px;padding:15px 10px}
-  .status{font-size:15px;margin-top:8px}.foot{font-size:11px;margin-top:10px}
-  .modalcard{width:min(92vw,620px)}
-}
-@media (min-width: 1180px) and (min-height: 760px){
-  .app{width:min(90vw,1020px)}
-  .boardwrap{width:min(48vh,490px)}
-}
-
-.sharecard{margin:12px 0;padding:14px;border-radius:15px;background:#fff9;text-align:center}.sharecard img{width:190px;height:190px;max-width:70%;border-radius:12px;background:#fff;padding:8px}.sharecard p{margin:8px 0;font-size:13px}.shareactions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.shareactions button{border:0;border-radius:12px;padding:11px 8px;font:inherit;font-weight:850;background:#fff8dc;color:var(--ink)}
-</style></head><body><main class="app"><header><div class="brand">Wildoku 🦊</div><div class="topactions"><button class="infobtn" id="infoBtn" aria-label="Anleitung">?</button><div class="badge" id="net">bereit</div></div></header><div class="updatebar" id="updatebar"><span id="updatebarText">Neue Wildoku-Version verfügbar.</span><div class="updateactions"><button class="secondary" id="updateLater">Später</button><button id="updatebtn">Jetzt aktualisieren</button></div></div><div class="sizebar" id="sizebar"><button class="sizebtn" data-size="5">5×5</button><button class="sizebtn active" data-size="6">6×6</button><button class="sizebtn" data-size="7">7×7</button><button class="sizebtn" data-size="8">8×8</button><button class="sizebtn" data-size="random">🎲 Zufall</button></div><div class="diffbar" id="diffbar"><button class="diffbtn" data-diff="relaxed">Entspannt</button><button class="diffbtn active" data-diff="normal">Normal</button><button class="diffbtn" data-diff="tricky">Knifflig</button></div><section class="info"><div><div class="level" id="level">Rätsel</div><div class="sub" id="sub">Wird lokal erzeugt …</div></div><div class="rightinfo"><div class="lives" id="lives">❤️❤️❤️</div><div class="timer" id="timer">00:00</div></div></section><div class="boardwrap"><div class="board" id="board"></div><div class="creating" id="creating">Bitte warten …<br>Level wird erstellt</div></div><div class="status" id="status"></div><div class="helps"><button class="helpbtn" id="hint">💡 Tipp <span id="hintCount">3</span></button><button class="helpbtn" id="reveal">🦊 Tier zeigen <span id="revealCount">1</span></button></div><div class="hintbox" id="hintbox"></div><div class="controls"><button class="btn" id="undo">↶ Rückgängig</button><button class="btn" id="new">✨ Neues Rätsel</button><button class="btn" id="reset">↻ Neustart</button></div><div class="legend"><b>Bedienung:</b> 1× tippen = ✕ Ausschluss · 2× tippen = 🦊 Tier · gedrückt halten = ? Kandidat.</div></main><div class="modal" id="infoModal"><div class="modalcard"><h2>So spielst du Wildoku</h2><p><b>1× tippen</b> = ✕ Ausschluss<br><b>2× tippen</b> = 🦊 Tier<br><b>Gedrückt halten</b> = ? Kandidat</p><p>In jeder Zeile, Spalte und Farbregion steht genau ein Tier. Tiere dürfen sich auch diagonal nicht berühren. Mindestens eine Einzelfeld-Region gibt dir einen sicheren Einstieg.</p><p>Falsch gesetzte Tiere bleiben als rotes ✕ markiert. Du hast pro Rätsel <b>3 Leben</b>. Dazu gibt es <b>3 Tipps</b> und <b>1× Tier zeigen</b>.</p><div class="settingrow"><span><b>Zonengrenzen</b><br><small>Farbflächen bleiben sichtbar</small></span><button class="switch" id="regionToggle">Ein</button></div><p class="difficulty-note">Entspannt: direkte Logik · Normal: längere Schlussketten · Knifflig: darf gelegentlich eine Annahme verlangen.</p><p class="difficulty-note">Wildoku Version 0.6.7</p><div class="settingrow"><span><b>Internet in Wildoku</b><br><small id="networkModeText">Erlaubt automatische Updateprüfung</small></span><button class="switch" id="networkToggle">Online</button></div><div class="settingrow"><span><b>Updates</b><br><small id="updateStatus">Manuell nach einer neuen Version suchen</small></span><button class="switch" id="checkUpdateBtn">Suchen</button></div><div class="sharecard"><b>📱 Wildoku teilen</b><p>„Ich hab ein Spiel mit ChatGPT gemacht. Wenn du magst, kannst du es auch spielen. Ich kann dir den Link schicken oder du scannst den QR-Code.“</p><img id="shareQr" alt="QR-Code zu Wildoku"><div class="shareactions"><button id="shareLinkBtn">Link teilen</button><button id="copyLinkBtn">Link kopieren</button></div><div class="shareinstall"><p><b>📱 Als App installieren</b><br><b>iPhone / iPad:</b> QR-Code oder Link in Safari öffnen → Teilen → „Zum Home-Bildschirm“ → Hinzufügen.<br><b>Android:</b> QR-Code oder Link in Chrome öffnen → Menü ⋮ → „Zum Startbildschirm hinzufügen“ bzw. „App installieren“.</p><p><b>Danach auch offline spielbar.</b> Keine Werbung, kein Konto nötig.</p></div><p><small>Öffentliche Version: gregorbuerger.github.io/wildoku/</small></p></div><button class="modalclose" id="infoClose">Schließen</button></div></div><div class="toast" id="toast"></div>
-<script>
 let N=6; const ANIMAL='🦊'; let sizeMode=localStorage.getItem('wildokuSizeMode')||'6';let difficultyMode=localStorage.getItem('wildokuDifficulty')||'normal',activeDifficulty=difficultyMode;let showRegionBorders=localStorage.getItem('wildokuRegionBorders')!=='0';
 const board=document.getElementById('board'),status=document.getElementById('status'),toast=document.getElementById('toast');
 function lockBoardSquare(){const w=Math.floor(board.getBoundingClientRect().width);if(w>0)board.style.height=w+'px'}
@@ -123,35 +70,27 @@ function nextLogicalHint(){
  return {type:'stuck',cells:[],reason:'Im aktuellen sichtbaren Spielstand ist mit den bekannten direkten Logikregeln kein sicherer weiterer Schritt ableitbar.'};
 }
 function useHint(){
- if(hints<=0)return;
- clearHint();
- const h=nextLogicalHint();
- if(!h)return;
- const rowLabel=r=>'Zeile '+(r+1), colLabel=c=>'Spalte '+(c+1);
- // Genau ein Tipp-Klick wird vollständig abgeschlossen: entscheiden -> ausführen -> rendern -> erklären -> Tipp abbuchen.
+ if(hints<=0)return;clearHint();let box=document.getElementById('hintbox'),h=nextLogicalHint();
+ if(!h){box.textContent='';box.classList.remove('show');return}
+ for(let i of h.cells)hintCells.add(i);if(h.source)for(let i of h.source)hintSourceCells.add(i);
  if(h.type==='stuck'){
-   const choices=[];
-   for(let r=0;r<N;r++){const i=I(r,puzzle.solution[r]);if(state[i]!=='animal')choices.push(i)}
-   if(!choices.length)return;
-   const i=choices[Math.floor(Math.random()*choices.length)];
-   snapshot();
-   state[i]='animal';fixed.add(i);hintCells.add(i);
-   const [rr,cc]=RC(i);
-   const msg='🍀 Jetzt ist ein bisschen Glück gefragt. Aus dem aktuellen sichtbaren Spielstand lässt sich kein sicherer nächster Schritt ableiten. Ich helfe dir netterweise weiter und setze ein Tier an die richtige Stelle: '+rowLabel(rr)+', '+colLabel(cc)+'. Dein „Tier zeigen“-Joker bleibt erhalten.';
-   render();
-   showHintMessage(msg);
-   status.textContent='🍀 Glückshilfe: Ein richtiges Tier wurde gesetzt.';
-   hints--;updateHelps();save();checkWin();
-   return;
+   // Kein sicherer Logikschritt: Der Tipp wird bewusst zur kleinen Glueckshilfe.
+   // Er verbraucht einen normalen Tipp, aber NICHT den separaten "Tier zeigen"-Joker.
+   let choices=[];for(let r=0;r<N;r++){let i=I(r,puzzle.solution[r]);if(state[i]!=='animal')choices.push(i)}
+   if(!choices.length){box.textContent='';box.classList.remove('show');return}
+   let i=choices[Math.floor(Math.random()*choices.length)];snapshot();state[i]='animal';fixed.add(i);hintCells.add(i);hints--;updateHelps();
+   let [rr,cc]=RC(i);
+   const msg='🍀 Jetzt ist ein bisschen Glück gefragt. Aus dem aktuellen sichtbaren Spielstand lässt sich kein sicherer nächster Schritt ableiten. Ich helfe dir netterweise weiter und setze ein Tier an die richtige Stelle: '+rowName(rr)+', '+colName(cc)+'. Dafür wird 1 Tipp verbraucht; dein „Tier zeigen“-Joker bleibt erhalten.';
+   render();showHintMessage(msg);status.textContent='🍀 Glückshilfe: Ein richtiges Tier wurde gesetzt.';
+   checkWin();return;
  }
+ // Ein echter Tipp ist ein vollständiger sicherer Logikschritt: erklären und automatisch ausführen.
  snapshot();
- if(h.type==='exclude')for(const i of h.cells)if(state[i]===''||state[i]==='q')state[i]='x';
- if(h.type==='place'){const i=h.cells[0];state[i]='animal';fixed.add(i)}
- for(const i of h.cells)hintCells.add(i);if(h.source)for(const i of h.source)hintSourceCells.add(i);
+ if(h.type==='exclude')for(let i of h.cells)if(state[i]===''||state[i]==='q')state[i]='x';
+ if(h.type==='place'){let i=h.cells[0];state[i]='animal';fixed.add(i)}
+ hints--;updateHelps();
  const msg='Tipp: '+h.reason+(h.type==='place'?' Das logisch sichere Tier wurde automatisch gesetzt.':' Die daraus sicher ausgeschlossenen Felder wurden automatisch mit × markiert.');
- render();
- showHintMessage(msg);
- hints--;updateHelps();save();checkWin();
+ render();showHintMessage(msg);checkWin();
 }
 function revealAnimal(){if(reveals<=0)return;clearHint();let choices=[];for(let r=0;r<N;r++){let i=I(r,puzzle.solution[r]);if(state[i]!=='animal')choices.push(i)}if(!choices.length)return;let i=choices[Math.floor(Math.random()*choices.length)];snapshot();state[i]='animal';fixed.add(i);reveals--;updateHelps();let [r,c]=RC(i);status.textContent='🦊 Ein richtiges Tier wurde für dich gesetzt.';render();checkWin()}
 
@@ -168,7 +107,7 @@ function net(){let n=document.getElementById('net');if(!networkAllowed){n.textCo
 function applyNetworkMode(){let b=document.getElementById('networkToggle'),t=document.getElementById('networkModeText');if(b){b.textContent=networkAllowed?'Online':'Offline';b.classList.toggle('off',!networkAllowed)}if(t)t.textContent=networkAllowed?'Wildoku darf für Updates ins Internet':'Wildoku nutzt keine Internetverbindung';net()}
 document.getElementById('networkToggle').onclick=()=>{networkAllowed=!networkAllowed;localStorage.setItem('wildokuNetworkAllowed',networkAllowed?'1':'0');applyNetworkMode();if(networkAllowed&&navigator.onLine)explicitVersionCheckGlobal()};
 addEventListener('online',net);addEventListener('offline',net);applyNetworkMode();
-const APP_VERSION='0.6.7';
+const APP_VERSION='0.5.9';
 async function fetchServerVersion(){
   // Immer dieselbe Wildoku-Installation ansprechen, unabhängig davon,
   // ob die PWA über /wildoku/, /wildoku/index.html oder mit Query gestartet wurde.
@@ -184,13 +123,8 @@ async function fetchServerVersion(){
   return v.version.trim();
 }
 let pendingUpdateVersion='';
-function setUpdateIndicator(on){
-  const b=document.getElementById('infoBtn');
-  if(b)b.classList.toggle('update-pending',!!on);
-}
 function offerUpdate(version){
   pendingUpdateVersion=version;
-  setUpdateIndicator(true);
   const bar=document.getElementById('updatebar'),txt=document.getElementById('updatebarText');
   txt.textContent='Wildoku '+version+' ist verfügbar.';
   bar.classList.add('show');
@@ -233,14 +167,14 @@ async function checkForUpdate(manual=false){
   if(manual){b.disabled=true;b.textContent='Prüfe …';st.textContent='Suche nach Updates …';}
   try{
     const serverVersion=await fetchServerVersion();
-    if(serverVersion===APP_VERSION){pendingUpdateVersion='';setUpdateIndicator(false);document.getElementById('updatebar').classList.remove('show');if(manual)st.textContent='Wildoku ist aktuell (Version '+APP_VERSION+').';}
+    if(serverVersion===APP_VERSION){if(manual)st.textContent='Wildoku ist aktuell (Version '+APP_VERSION+').';}
     else {offerUpdate(serverVersion);if(manual)st.textContent='Version '+serverVersion+' ist verfügbar. Du entscheidest, wann sie installiert wird.';}
   }catch(e){if(manual)st.textContent='Updateprüfung fehlgeschlagen: '+(e&&e.message?e.message:String(e));}
   finally{if(manual){b.textContent='Suchen';b.disabled=false;}}
 }
 document.getElementById('checkUpdateBtn').onclick=()=>checkForUpdate(true);
 document.getElementById('updatebtn').onclick=installPendingUpdate;
-document.getElementById('updateLater').onclick=()=>{document.getElementById('updatebar').classList.remove('show');setUpdateIndicator(true);};
+document.getElementById('updateLater').onclick=()=>{document.getElementById('updatebar').classList.remove('show');};
 let explicitVersionCheckGlobal=()=>checkForUpdate(false);
 if('serviceWorker' in navigator){
   let refreshing=false;
@@ -256,25 +190,4 @@ if('serviceWorker' in navigator){
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkForUpdate(false);});
 }
 document.querySelectorAll('.sizebtn').forEach(b=>b.classList.toggle('active',b.dataset.size===sizeMode));document.querySelectorAll('.diffbtn').forEach(b=>b.classList.toggle('active',b.dataset.diff===difficultyMode));
-
-const PUBLIC_SHARE_URL='https://gregorbuerger.github.io/wildoku/';
-function prepareShare(){const q=document.getElementById('shareQr');if(q&&!q.src)q.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&data='+encodeURIComponent(PUBLIC_SHARE_URL)}
-document.getElementById('shareLinkBtn').onclick=async()=>{try{if(navigator.share)await navigator.share({title:'Wildoku',text:'Ich hab ein Spiel mit ChatGPT gemacht. Wenn du magst, kannst du es auch spielen.',url:PUBLIC_SHARE_URL});else{await navigator.clipboard.writeText(PUBLIC_SHARE_URL);showToast('Link kopiert')}}catch(_){}};
-document.getElementById('copyLinkBtn').onclick=async()=>{try{await navigator.clipboard.writeText(PUBLIC_SHARE_URL);showToast('Link kopiert')}catch(_){prompt('Wildoku-Link:',PUBLIC_SHARE_URL)}};
-document.getElementById('infoBtn').addEventListener('click',prepareShare);
 startPuzzle();
-</script></body></html>
-
-<style>
-.foot{display:none!important}
-@media (min-width:900px){
-  html,body{overflow:hidden!important}
-  .app{height:calc(100vh - 2px)!important;min-height:0!important;padding-top:14px!important;padding-bottom:6px!important}
-  header{margin-bottom:7px!important}
-  .sizebar{margin-bottom:5px!important}
-  .diffbar{margin-bottom:5px!important}
-  .info{margin-top:2px!important;margin-bottom:6px!important}
-  .helps{margin-top:7px!important}
-  .controls{margin-top:7px!important}
-}
-</style>
